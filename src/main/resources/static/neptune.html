@@ -9,15 +9,24 @@
   src="webjars/extjs/4.2.1.883/packages/ext-theme-neptune/build/ext-theme-neptune.js"></script>
 <!-- <script type ="text/javascript" src="js/app.js"></script> -->
 <script type="text/javascript">
-	Ext.onReady(function () {
-		Ext.create("Ext.Button", {
-			text: "Hello World",
-			handler : function helloWorldHandler () {
-				Ext.Msg.alert("You clicked the hello world button");
-			},
-			renderTo: Ext.getBody()
-		});
-	});
+Ext.onReady(function() {
+    Ext.create("Ext.Panel", {
+        title : "Hello World Panel",
+        items : [
+                 Ext.create("Ext.form.field.Text", {
+                     fieldLabel : "Name",
+                     id : "nametext"
+                 }),
+                 Ext.create("Ext.Button", {
+                     text: "Click",
+                     handler : function clickHandler() {
+                         Ext.Msg.alert(Ext.getCmp("nametext").getValue());
+                     }
+                 })
+       	],
+        renderTo : Ext.getBody()
+    });
+});
 </script>
 </head>
 <body>

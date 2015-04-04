@@ -2,19 +2,29 @@
 <html>
 <head>
 <title>Welcome to Ext JS!</title>
-<link rel="stylesheet" type="text/css" href="webjars/extjs/4.2.1.883/resources/css/ext-all.css">
+<link rel="stylesheet" type="text/css"
+  href="webjars/extjs/4.2.1.883/resources/css/ext-all.css">
 <script src="webjars/extjs/4.2.1.883/ext-all.js"></script>
 <!-- <script type ="text/javascript" src="js/app.js"></script> -->
 <script type="text/javascript">
-	Ext.onReady(function () {
-		Ext.create("Ext.Button", {
-			text: "Hello World",
-			handler : function helloWorldHandler () {
-				Ext.Msg.alert("You clicked the hello world button");
-			},
-			renderTo: Ext.getBody()
-		});
-	});
+    Ext.onReady(function() {
+        Ext.create("Ext.Panel", {
+            title : "Hello World Panel",
+            items : [
+                     Ext.create("Ext.form.field.Text", {
+                         fieldLabel : "Name",
+                         id : "nametext"
+                     }),
+                     Ext.create("Ext.Button", {
+                         text: "Click",
+                         handler : function clickHandler() {
+                             Ext.Msg.alert(Ext.getCmp("nametext").getValue());
+                         }
+                     })
+           	],
+            renderTo : Ext.getBody()
+        });
+    });
 </script>
 </head>
 <body>
