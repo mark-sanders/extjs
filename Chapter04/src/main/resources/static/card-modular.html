@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to Ext JS!</title>
+<link rel="stylesheet" type="text/css"
+  href="webjars/extjs/4.2.1.883/resources/css/ext-all.css">
+<script src="webjars/extjs/4.2.1.883/ext-all-debug.js"></script>
+<script type ="text/javascript">
+Ext.define("Screen1", {
+    extend: "Ext.panel.Panel",
+    xtype: "screen1",
+    title: "Screen 1",
+    items: [
+        {
+            xtype: "button",
+            text: "Screen 2 >>",
+            handler: function() {
+                Ext.getCmp("viewport").getLayout().setActiveItem("screen2");
+            }
+        }
+    ]
+});
+
+Ext.define("Screen2", {
+    extend: "Ext.panel.Panel",
+    xtype: "screen2",
+    title: "Screen 2",
+    items: [
+        {
+            xtype: "button",
+            text: "Screen 3 >>",
+            handler: function() {
+                Ext.getCmp("viewport").getLayout().setActiveItem("screen3");
+            }
+        }
+        
+    ]
+});
+
+Ext.define("Screen3", {
+    extend: "Ext.panel.Panel",
+    xtype: "screen3",
+    title: "Screen 3",
+});
+
+Ext.onReady(function() {
+    Ext.create("Ext.container.Viewport",{
+        renderTo: Ext.getBody(),
+        layout : "card",
+        padding: 30,
+        id: "viewport", 
+        items : [
+            { 
+                xtype: "screen1",
+                id: "screen1"
+            },
+            { 
+                xtype: "screen2",
+                id: "screen2"
+            },
+            { 
+                xtype: "screen3",
+                id: "screen3"
+            }
+        ]
+    });
+
+});
+</script>
+</head>
+<body>
+</body>
+</html>

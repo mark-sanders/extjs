@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to Ext JS!</title>
+<link rel="stylesheet" type="text/css"
+  href="webjars/extjs/4.2.1.883/resources/css/ext-all.css">
+<script src="webjars/extjs/4.2.1.883/ext-all-debug.js"></script>
+<script type ="text/javascript">
+Ext.onReady(function() {
+    Ext.create("Ext.container.Viewport",{
+        renderTo: Ext.getBody(),
+        layout : "card",
+        padding: 30,
+        id: "main", 
+        items : [
+            { 
+                xtype: "panel", 
+                title: "Screen 1",
+                items: [
+                    {
+                        xtype: "button",
+                        text: "Screen 2 >>",
+                        handler: function() {
+                            Ext.getCmp("main").getLayout().setActiveItem(1);
+                        }
+                    }
+                    
+                ]
+            },
+            { 
+                xtype: "panel", 
+                title: "Screen 2",
+                items: [
+                    {
+                        xtype: "button",
+                        text: "Screen 3 >>",
+                        handler: function() {
+                            Ext.getCmp("main").getLayout().setActiveItem("screen3");
+                        }
+                    }
+                    
+                ]
+            },
+            { 
+                xtype: "panel", 
+                id: "screen3",
+                title: "Screen 3"
+            }
+        ]
+    });
+
+});
+</script>
+</head>
+<body>
+</body>
+</html>

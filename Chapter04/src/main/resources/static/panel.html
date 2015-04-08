@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to Ext JS!</title>
+<link rel="stylesheet" type="text/css"
+  href="webjars/extjs/4.2.1.883/resources/css/ext-all.css">
+<script src="webjars/extjs/4.2.1.883/ext-all-debug.js"></script>
+<script type ="text/javascript">
+Ext.onReady(function() {
+    Ext.create("Ext.container.Viewport",{
+        renderTo: Ext.getBody(),
+        layout : "fit",
+        items : [
+           Ext.create("Ext.panel.Panel", {
+               title: "Panel with a toolbar",
+               html : "This is an example to use a toolbar",
+               dockedItems: [
+                 {
+                   xtype: "toolbar",
+                   dock: "bottom",
+                   items: [
+                       {
+                         xtype: "tbtext",
+                         text: "Item: 19"
+                       },
+                       "-",
+                       {
+                          xtype: "tbtext",
+                          text: "English (United States)"
+                       },
+                       " ",
+                       {
+                          xtype : "combo",
+                          fieldLabel : "Go to",
+                          labelAlign : "right",
+                       },
+                       "->",
+                       {
+                          text: "Print",
+                       },
+                       " ",
+                       {
+                          text: "Outline",
+                       }
+                   ]
+                }
+              ]
+           })
+       ]
+       });
+
+});
+</script>
+</head>
+<body>
+</body>
+</html>

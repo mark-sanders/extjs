@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to Ext JS!</title>
+<link rel="stylesheet" type="text/css"
+  href="webjars/extjs/4.2.1.883/resources/css/ext-all.css">
+<script src="webjars/extjs/4.2.1.883/ext-all-debug.js"></script>
+<script type ="text/javascript">
+Ext.onReady(function() {
+    Ext.create("Ext.container.Viewport",{
+        renderTo: Ext.getBody(),
+        layout : "border",
+        padding: 30,
+        id: "main", 
+        height: 500,
+        width: 400,
+        items : [
+            { 
+                xtype: "panel", 
+                html: "Top", 
+                region: "north" 
+            },
+            { 
+                xtype: "panel", 
+                html: "Main contents", 
+                region: "center" 
+            },
+            { 
+                xtype: "panel", 
+                html: "Side bar", 
+                region: "west", 
+                collapsible: false, 
+                split: true 
+            },
+        ]
+    });
+
+});
+</script>
+</head>
+<body>
+</body>
+</html>
