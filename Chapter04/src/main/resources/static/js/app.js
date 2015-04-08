@@ -2,6 +2,7 @@ Ext.onReady(function() {
     Ext.create("Ext.form.Panel", {
         title : "Controls",
         url: "/post",
+        baseParams: {id: '123', foo: 'bar'},
         defaults: { 
             msgTarget: "side" 
         },
@@ -62,8 +63,37 @@ Ext.onReady(function() {
               xtype: "button", 
               text: "Submit",
               listeners : {
-                  "click" : function(src) {
-                      src.up("form").submit();
+                  click : function(src) {
+                      src.up("form").submit({
+                          success : function (form, action) {
+                              // should look at result
+                              console.dir(action);
+                              Ext.Msg.alert('Success', "Successfully submitted");
+                          },
+                          failure:  function (form, action) {
+                              console.dir(action);
+                              switch(action.failureType) {
+                                  case Ext.form.action.Action.CLIENT_INVALID:
+                                      console.log("client-side validation failed");
+                                      break;
+
+                                  case Ext.form.action.Action.CONNECT_FAILURE:
+                                      console.log("connection failed");
+                                      Ext.Msg.alert('Failure', 'Ajax communication failed');
+                                      break;
+
+//                                  case Ext.form.action.Action.LOAD_FAILURE:
+//                                      console.log("load failure - no response");
+//                                      Ext.Msg.alert('Failure', 'success : true but no content');
+//                                      break;
+//
+                                  case Ext.form.action.Action.SERVER_INVALID:
+                                      console.log("server rejected");
+                                      Ext.Msg.alert('Failure', action.result.message);
+                                      break;
+                              }
+                          }
+                      });
                   }
               }
           }
