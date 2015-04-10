@@ -40,7 +40,7 @@ class ExtjsDataApplication {
         [ first: "Pebbles", last: "Flintstone", email: "pebbles@flintstone.com" ],
         [ first: "Barney",  last: "Rubble",     email: "barney@rubble.com"      ],
         [ first: "Betty",   last: "Rubble",     email: "betty@rubble.com"       ],
-        [ first: "BamBam",  last: "Rubble",     email: "bambam@rubble.com"      ],
+        [ first:"Bamm-Bamm",last: "Rubble",     email: "Bamm-Bamm@rubble.com"      ],
     ] 
     
     final ConcurrentNavigableMap<Integer, Map> usersStore = new ConcurrentSkipListMap<Integer, Map>()
@@ -82,10 +82,10 @@ class ExtjsDataApplication {
                 usersStore[id] = newUser
                 [ success: true, message: "User added", data: newUser ]
             } else {
-                [ success: false, message: "Invalid user object - missing elements" ]
+                [ success: false, message: "Invalid user object - missing elements: [$userObject]" ]
             }
         } else {
-            [ success: false, message: "Invalid user object" ]
+            [ success: false, message: "Invalid user object: [$userObject]" ]
         }
     }
 
@@ -106,7 +106,7 @@ class ExtjsDataApplication {
         if (userObject instanceof Map && userObject.containsKey('id')) {
             updateUser(userObject.id, userObject)
         } else {
-            [ success: false, message: "Unknown user: [$userObject]" ]
+            [ success: false, message: "Invalid user object: [$userObject]" ]
         }
     }
 
