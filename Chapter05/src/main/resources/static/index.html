@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to Ext JS!</title>
+<link rel="stylesheet" type="text/css"
+  href="webjars/extjs/4.2.1.883/resources/css/ext-all.css">
+<script src="webjars/extjs/4.2.1.883/ext-all-debug.js"></script>
+<script src="js/restful.js"></script>
+<script>
+Ext.onReady(function() {
+
+//  Ext.create("Ext.data.Connection").request(
+//      Ext.create("Ext.data.Request",{
+//          url: "books",
+//          success: function (xhr) {
+//              console.log(xhr.responseText);
+//          },
+//          failure : function(xhr){
+//              console.log("Error: " + xhr.statusText);
+//          }
+//      })
+//  );
+
+    Ext.Ajax.request({
+        url: "books",
+        success: function (xhr) {
+            console.log(xhr.responseText);
+        },
+        failure : function(xhr){
+            console.log("Error: " + xhr.statusText);
+        }
+    });
+});
+</script>
+</head>
+<body>
+</html>
