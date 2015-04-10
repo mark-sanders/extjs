@@ -38,7 +38,7 @@ Ext.onReady(function(){
         model: 'Person',
         proxy: {
             type: 'rest',
-            url: 'restful/users',
+            url: 'users',
             reader: {
                 type: 'json',
                 root: 'data' // NOT rootProperty
@@ -61,16 +61,7 @@ Ext.onReady(function(){
                 }
                 Ext.Msg.alert(name, Ext.String.format("{0} user: {1}", verb, record.getId()));
                 
-            },
-            load: function(store, records, successful, eOpts) {
-                console.dir(records);
-                debugger;
-            },
-            exception: function(store, records, successful, eOpts) {
-                console.dir(records);
-                debugger;
             }
-            
         }
     });
     
